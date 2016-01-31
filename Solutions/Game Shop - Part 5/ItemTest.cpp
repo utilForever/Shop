@@ -1,6 +1,6 @@
 #include "Item.h"
 
-int main()
+int main(int argc, char* argv[])
 {
 	Item* item = new Weapon("Excalibur", "The legendary sword of King Arthur", 12.0f, 1024.0f, 24.0f);
 	item->Describe();

@@ -1,5 +1,5 @@
-"Weapon" "Sword" "Medium DMG" 3.0 10.0 10.0
-"Armor" "Cap" "Light Armor" 1.0 5.0 5.0
-"Armor" "Gloves" "Light Armor" 1.0 5.0 5.0
-"Weapon" "Axe" "High DMG" 5.0 15.0 15.0
-"Armor" "Boots" "Light Armor" 1.0 5.0 5.0
+"Weapon" "Sword" "Medium DMG" 3 10 10
+"Armor" "Cap" "Light Armor" 1 5 5
+"Armor" "Gloves" "Light Armor" 1 5 5
+"Weapon" "Axe" "High DMG" 5 15 15
+"Armor" "Boots" "Light Armor" 1 5 5

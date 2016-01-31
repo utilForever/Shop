@@ -91,7 +91,7 @@ void Shop::ReadDataFromFile()
 	}
 }
 
-void Shop::ShowShopMessage() const
+void Shop::ShowShopMessage(Player& player) const
 {
 	int inputIndex = 0;
 
@@ -100,7 +100,8 @@ void Shop::ShowShopMessage() const
 		std::cout << "Welcome to " << m_name << "!" << std::endl;
 		std::cout << "-----------------------------" << std::endl;
 		std::cout << "1. Show Item List" << std::endl;
-		std::cout << "2. Exit" << std::endl;
+		std::cout << "2. Buy Item" << std::endl;
+		std::cout << "3. Exit" << std::endl;
 		std::cout << std::endl;
 
 		std::cout << "Select : ";
@@ -111,6 +112,9 @@ void Shop::ShowShopMessage() const
 			ShowItemList();
 			break;
 		case 2:
+			ShowBuyMessage(player);
+			break;
+		case 3:
 			return;
 			break;
 		default:
@@ -122,10 +126,81 @@ void Shop::ShowShopMessage() const
 
 void Shop::ShowItemList() const
 {
+	int itemIdx = 0;
+
 	std::cout << "- Item List -" << std::endl;
-	for (auto& item : m_items)
+	for (auto item : m_items)
 	{
+		std::cout << "No. " << (itemIdx++) + 1 << std::endl;
 		item->Describe();
+		std::cout << std::endl;
+	}
+}
+
+void Shop::ShowBuyMessage(Player& player) const
+{
+	size_t buyItemIndex = 0;
+
+	while (true)
+	{
+		std::cout << "Which item to buy?";
+		std::cout << " (1 ~ " << m_items.size() << ", 0: Exit) ";
+
+		std::cin >> buyItemIndex;
+
+		if (buyItemIndex == 0)
+		{
+			return;
+		}
+		
+		if (buyItemIndex < 1 || buyItemIndex > m_items.size())
+		{
+			std::cout << "Error: Invalid number, please input again." << std::endl;
+		}
+		else
+		{
+			int numItems = 0;
+			
+			while (true)
+			{
+				std::cout << "How many do you think you'll need? (0: Exit) ";
+				std::cin >> numItems;
+
+				if (numItems == 0)
+				{
+					return;
+				}
+
+				if (numItems < 0)
+				{
+					std::cout << "Error: Invalid number, please input again." << std::endl;
+				}
+				else
+				{
+					BuyItem(player, buyItemIndex - 1, numItems);
+					return;
+				}
+			}
+		}
+	}
+}
+
+void Shop::BuyItem(Player& player, int index, int numItems) const
+{
+	if (player.GetGold() - m_items[index]->GetGold() * numItems < 0)
+	{
+		std::cout << "You can't buy this, because you don't have enough gold!" << std::endl;
+	}
+	else
+	{
+		std::cout << "Thanks for buying the " << m_items[index]->GetName() << "!" << std::endl;
+		std::cout << "Now, your gold is " << player.GetGold() << " - " << m_items[index]->GetGold() << " = ";
+		player.SetGold(player.GetGold() - m_items[index]->GetGold());
+		std::cout << player.GetGold() << std::endl;
+
+		player.AddItemToInventory(m_items[index], numItems);
+		std::cout << numItems << " " << m_items[index]->GetName();
+		std::cout << " stored in player's inventory." << std::endl;
 		std::cout << std::endl;
 	}
 }

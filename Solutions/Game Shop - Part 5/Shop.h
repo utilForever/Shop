@@ -6,6 +6,7 @@
 #include <fstream>
 
 #include "Item.h"
+#include "Player.h"
 
 class Shop
 {
@@ -22,8 +23,11 @@ public:
 
 	void ReadDataFromFile();
 
-	void ShowShopMessage() const;
+	void ShowShopMessage(Player& player) const;
 	void ShowItemList() const;
+	void ShowBuyMessage(Player& player) const;
+
+	void BuyItem(Player& player, int index, int numItems) const;
 
 private:
 	std::ifstream m_fileStream;

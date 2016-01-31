@@ -1,13 +1,10 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include <iostream>
-#include <string>
-
 class Item
 {
 public:
-	Item(std::string name, std::string description, float weight, float value);
+	Item(std::string name, std::string description, int weight, int value);
 	Item(const Item& item) = default;
 	Item(Item&& item) = default;
 	virtual ~Item() = default;
@@ -20,14 +17,14 @@ public:
 protected:
 	std::string m_name;
 	std::string m_description;
-	float m_weight;
-	float m_value;
+	int m_weight;
+	int m_value;
 };
 
 class Weapon : public Item
 {
 public:
-	Weapon(std::string name, std::string description, float weight, float value, float damage);
+	Weapon(std::string name, std::string description, int weight, int value, int damage);
 	Weapon(const Weapon& weapon) = default;
 	Weapon(Weapon&& weapon) = default;
 	virtual ~Weapon() = default;
@@ -35,16 +32,16 @@ public:
 	Weapon& operator=(const Weapon& rhs) = default;
 	Weapon& operator=(Weapon&& rhs) = default;
 
-	virtual void Describe() const override;
+	void Describe() const override;
 
 protected:
-	float m_damage;
+	int m_damage;
 };
 
 class Armor : public Item
 {
 public:
-	Armor(std::string name, std::string description, float weight, float value, float defense);
+	Armor(std::string name, std::string description, int weight, int value, int defense);
 	Armor(const Armor& armor) = default;
 	Armor(Armor&& armor) = default;
 	virtual ~Armor() = default;
@@ -52,10 +49,10 @@ public:
 	Armor& operator=(const Armor& rhs) = default;
 	Armor& operator=(Armor&& rhs) = default;
 
-	virtual void Describe() const override;
+	void Describe() const override;
 
 protected:
-	float m_defense;
+	int m_defense;
 };
 
 #endif

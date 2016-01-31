@@ -1,5 +1,5 @@
-"Potion" "Small Health Potion" "Recovery 100 HP" 1.0 50.0 "Health" 100.0
-"Potion" "Small Mana Potion" "Recovery 50 MP" 0.5 30.0 "Mana" 50.0
-"Potion" "Medium Health Potion" "Recovery 200 HP" 2.0 120.0 "Health" 200.0
-"Potion" "Medium Mana Potion" "Recovery 100 MP" 1.0 75.0 "Mana" 100.0
-"Potion" "Large Health Potion" "Recovery 300 HP" 3.0 200.0 "Health" 300.0
+"Potion" "Small Health Potion" "Recovery 100 HP" 2 5 "Health" 100
+"Potion" "Small Mana Potion" "Recovery 50 MP" 1 30 "Mana" 50
+"Potion" "Medium Health Potion" "Recovery 200 HP" 4 120 "Health" 200
+"Potion" "Medium Mana Potion" "Recovery 100 MP" 2 75 "Mana" 100
+"Potion" "Large Health Potion" "Recovery 300 HP" 6 200 "Health" 300

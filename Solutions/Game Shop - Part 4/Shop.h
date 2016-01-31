@@ -14,25 +14,26 @@ public:
 	Shop();
 	Shop(std::string name, std::initializer_list<std::shared_ptr<Item>> items);
 	Shop(std::string name, std::string fileName);
-	Shop(const Shop& shop) = default;
-	Shop(Shop&& shop) = default;
+	Shop(const Shop& shop) = delete;
+	Shop(Shop&& shop) = delete;
 	~Shop();
 
-	Shop& operator=(const Shop& rhs) = default;
-	Shop& operator=(Shop&& rhs) = default;
+	Shop& operator=(const Shop& rhs) = delete;
+	Shop& operator=(Shop&& rhs) = delete;
 
 	void ReadDataFromFile();
 
-	void ShowItemList() const;
 	void ShowShopMessage(Player& player) const;
+	void ShowItemList() const;
+	void ShowBuyMessage(Player& player) const;
 
 	void BuyItem(Player& player, int index) const;
 
 private:
+	std::ifstream m_fileStream;
+
 	std::string m_name;
 	std::string m_fileName;
-
-	std::ifstream m_fileStream;
 
 	std::vector<std::shared_ptr<Item>> m_items;
 };

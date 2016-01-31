@@ -1,9 +1,11 @@
+#include <iostream>
+
 #include "Player.h"
 #include "Shop.h"
 
 void ShowShopList(Player&, Shop&, Shop&);
 
-int main(int argc, char* argv[])
+int main()
 {
 	Player player(20);
 
@@ -36,13 +38,18 @@ void ShowShopList(Player& player, Shop& weaponArmorShop, Shop& potionShop)
 		case 1:
 			system("cls");
 			weaponArmorShop.ShowShopMessage(player);
+			system("cls");
 			break;
 		case 2:
 			system("cls");
 			potionShop.ShowShopMessage(player);
+			system("cls");
 			break;
 		case 3:
 			exit(0);
+			break;
+		default:
+			std::cout << "Error: Invalid number, please input again." << std::endl;
 			break;
 		}
 	}

@@ -1,3 +1,6 @@
+#include <iostream>
+#include <string>
+
 #include "Shop.h"
 
 Shop::Shop()

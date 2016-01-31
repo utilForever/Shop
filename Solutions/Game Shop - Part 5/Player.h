@@ -1,6 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <map>
+#include <memory>
+
+#include "Item.h"
+
 class Player
 {
 public:
@@ -16,8 +21,14 @@ public:
 
 	int GetGold() const;
 	void SetGold(int gold);
+
+	void AddItemToInventory(std::shared_ptr<Item> item, int numItems);
+
+	void ShowInventory() const;
+
 private:
 	int m_gold;
+	std::map<std::string, int> m_inventory;
 };
 
 #endif
