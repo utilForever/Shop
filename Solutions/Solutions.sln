@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game Shop - Part 3", "Game 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game Shop - Part 4", "Game Shop - Part 4\Game Shop - Part 4.vcxproj", "{2B6FFC5D-C516-4C39-9B42-527BE7018661}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game Shop - Part 5", "Game Shop - Part 5\Game Shop - Part 5.vcxproj", "{EB9074B2-D682-41B3-AF7F-894354E56E93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{2B6FFC5D-C516-4C39-9B42-527BE7018661}.Release|x64.Build.0 = Release|x64
 		{2B6FFC5D-C516-4C39-9B42-527BE7018661}.Release|x86.ActiveCfg = Release|Win32
 		{2B6FFC5D-C516-4C39-9B42-527BE7018661}.Release|x86.Build.0 = Release|Win32
+		{EB9074B2-D682-41B3-AF7F-894354E56E93}.Debug|x64.ActiveCfg = Debug|x64
+		{EB9074B2-D682-41B3-AF7F-894354E56E93}.Debug|x64.Build.0 = Debug|x64
+		{EB9074B2-D682-41B3-AF7F-894354E56E93}.Debug|x86.ActiveCfg = Debug|Win32
+		{EB9074B2-D682-41B3-AF7F-894354E56E93}.Debug|x86.Build.0 = Debug|Win32
+		{EB9074B2-D682-41B3-AF7F-894354E56E93}.Release|x64.ActiveCfg = Release|x64
+		{EB9074B2-D682-41B3-AF7F-894354E56E93}.Release|x64.Build.0 = Release|x64
+		{EB9074B2-D682-41B3-AF7F-894354E56E93}.Release|x86.ActiveCfg = Release|Win32
+		{EB9074B2-D682-41B3-AF7F-894354E56E93}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
