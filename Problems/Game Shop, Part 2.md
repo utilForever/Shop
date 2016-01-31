@@ -2,21 +2,87 @@
 
 총을 쏘려면 총알이 필요하듯이, 전투를 하려면 아이템이 필요하다.
 
-문제는 아이템을 구입하고 싶은데 구입할 곳이 없다.
+문제는 아이템은 있는데, 구입할 수 있는 곳이 없다.
 
-그래서 아이템을 파는 상점을 만드려고 한다.
+맨몸으로 전투에 임할 플레이어가 안타까우니, 상점을 만들어 주도록 하자.
 
-상점에는 무기/방어구 상점, 포션 상점이 있으며 각 상점에는 아이템이 등록되어 있다.
+우선 상점에 판매하는 아이템 목록만 보여줄 수 있도록 구현하자.
 
-첫 화면에서 어떤 상점에 들어갈 것인지 선택할 수 있다.
+아 참, 장비만 있으면 아쉬우니 포션도 만들어 보자.
 
 ## 주의할 점
 
-포션을 위한 Potion 클래스를 추가로 만들되, 멤버 변수와 함수는 필요에 따라 구현 (Item 클래스를 상속받음)
+- 포션을 위한 `Potion` 클래스를 생성한다.
+   - `Item` 클래스로부터 상속을 받는다.
+   - 다음 멤버 변수를 갖는다.
+      - `std::string m_type` : 포션 타입 (HP / MP 등)
+      - `int m_capacity` : 회복량
+   - 나머지 부분은 `Weapon`, `Armor` 클래스와 유사하게 작성한다.
+- 상점을 위한 `Shop` 클래스를 생성한다.
+   - 다음 멤버 변수를 갖는다.
+      - `std::string m_name` : 상점 이름
+      - `std::vector<std::shared_ptr<Item>> m_items` : 상점에서 보유하고 있는 아이템 목록
+   - 다음 멤버 함수를 갖는다.
+      - `Shop()` : 디폴트 생성자
+      - `Shop(std::string name, std::initializer_list<std::shared_ptr<Item>> items)` : 매개 변수로 상점 이름과 아이템 목록을 받는 생성자
+      - 기타 나머지 특별 함수(복사/이동 생성자, 복사/이동 할당 연산자, 소멸자)는 `= default`로 처리한다.
+      - `void ShowItemList()` : 아이템 목록을 보여주는 함수
+- 테스트를 위한 ShopTest.cpp 파일을 생성한다. (ItemTest.cpp 파일은 삭제)
+```
+int main()
+{
+	Shop weaponArmorShop = Shop(
+		"Weapon/Armor Shop",
+		{
+		std::make_shared<Weapon>("Sword", "Medium DMG", 3, 10, 10),
+		std::make_shared<Armor>("Cap", "Light Armor", 1, 5, 5),
+		std::make_shared<Armor>("Gloves", "Light Armor", 1, 5, 5),
+		std::make_shared<Weapon>("Axe", "High DMG", 5, 1, 1),
+		std::make_shared<Armor>("Boots", "Light Armor", 1, 5, 5)
+		});
 
-Shop 클래스를 만들어서 두 상점에 활용 (각 상점에는 5개의 아이템이 있음)
+	Shop potionShop = Shop(
+		"Potion Shop",
+		{
+		std::make_shared<Potion>("Small Health Potion", "Recovery 100 HP", 2, 5, "Health", 100),
+		std::make_shared<Potion>("Small Mana Potion", "Recovery 50 MP", 1, 30, "Mana", 50),
+		std::make_shared<Potion>("Medium Health Potion", "Recovery 200 HP", 4, 120, "Health", 200),
+		std::make_shared<Potion>("Medium Mana Potion", "Recovery 100 MP", 2, 75, "Mana", 100),
+		std::make_shared<Potion>("Large Health Potion", "Recovery 300 HP", 6, 200, "Health", 300)
+		});
 
-Shop 클래스에 아이템을 어떻게 보관할 지 고민하기
+	int inputIndex = 0;
+	while (true)
+	{
+		std::cout << " - Shop Select - " << std::endl;
+		std::cout << "   1. Weapon/Armor Shop" << std::endl;
+		std::cout << "   2. Potion Shop" << std::endl;
+		std::cout << "   3. Exit" << std::endl;
+		std::cout << std::endl;
+
+		std::cout << "Select : ";
+		std::cin >> inputIndex;
+
+		switch (inputIndex) {
+		case 1:
+			system("cls");
+			weaponArmorShop.ShowItemList();
+			break;
+		case 2:
+			system("cls");
+			potionShop.ShowItemList();
+			break;
+		case 3:
+			exit(0);
+			break;
+		default:
+			system("cls");
+			std::cout << "Invalid number! Try again." << std::endl << std::endl;
+			break;
+		}
+	}
+}
+```
 
 ## 실행 결과
 
@@ -60,11 +126,63 @@ Weight      = 1 lbs
 Value       = 5 gold coins
 Defense     = 5
 
+- Shop Select -
+   1. Weapon/Armor Shop
+   2. Potion Shop
+   3. Exit
+
+Select : 2
+
+Welcome to Potion Shop!
+- Item List -
+Name        = Small Health Potion
+Description = Recovery 100 HP
+Weight      = 2 lbs
+Value       = 5 gold coins
+Type        = Health
+Capacity    = 100
+
+Name        = Small Mana Potion
+Description = Recovery 50 MP
+Weight      = 1 lbs
+Value       = 30 gold coins
+Type        = Mana
+Capacity    = 50
+
+Name        = Medium Health Potion
+Description = Recovery 200 HP
+Weight      = 4 lbs
+Value       = 120 gold coins
+Type        = Health
+Capacity    = 200
+
+Name        = Medium Mana Potion
+Description = Recovery 100 MP
+Weight      = 2 lbs
+Value       = 75 gold coins
+Type        = Mana
+Capacity    = 100
+
+Name        = Large Health Potion
+Description = Recovery 300 HP
+Weight      = 6 lbs
+Value       = 200 gold coins
+Type        = Health
+Capacity    = 300
+
+ - Shop Select -
+   1. Weapon/Armor Shop
+   2. Potion Shop
+   3. Exit
+   
+Select : 0
+
+Invalid number! Try again.
+
  - Shop Select -
    1. Weapon/Armor Shop
    2. Potion Shop
    3. Exit
 
-Select :
-...
+Select : 3
 ```
