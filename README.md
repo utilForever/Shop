@@ -9,8 +9,8 @@
 - Part 3 - 파일에서 아이템 정보 읽어오기
 - Part 4 - 상점에서 아이템 구입하기
 - Part 5 - 인벤토리 구현하기 & 상점에서 구입한 아이템 저장하기
-- Part 6 - 상점에서 구입한 아이템 불러오기
-- Part 7 - 아이템을 상점에 판매하기
+- Part 6 - 아이템을 상점에 판매하기
+- Part 7 - 인벤토리 아이템 파일에 저장하기 & 파일에서 불러오기
 
 ## 문제 (Problem)
 
@@ -23,6 +23,8 @@
 - [게임 상점(Game Shop), Part 4](https://github.com/utilForever/Shop/blob/master/Problems/Game%20Shop%2C%20Part%204.md)
 
 - [게임 상점(Game Shop), Part 5](https://github.com/utilForever/Shop/blob/master/Problems/Game%20Shop%2C%20Part%205.md)
+
+- [게임 상점(Game Shop), Part 6](https://github.com/utilForever/Shop/blob/master/Problems/Game%20Shop%2C%20Part%206.md)
 
 ## 해답 (Solution)
 
