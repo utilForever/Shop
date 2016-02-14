@@ -27,7 +27,7 @@ public:
 	void ShowItemList() const;
 	void ShowBuyMessage(Player& player) const;
 
-	void BuyItem(Player& player, int index, int numItems) const;
+	void BuyItem(Player& player, size_t index, int numItems) const;
 
 private:
 	std::ifstream m_fileStream;

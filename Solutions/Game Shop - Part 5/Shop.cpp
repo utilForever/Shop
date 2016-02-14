@@ -185,7 +185,7 @@ void Shop::ShowBuyMessage(Player& player) const
 	}
 }
 
-void Shop::BuyItem(Player& player, int index, int numItems) const
+void Shop::BuyItem(Player& player, size_t index, int numItems) const
 {
 	if (player.GetGold() - m_items[index]->GetGold() * numItems < 0)
 	{
