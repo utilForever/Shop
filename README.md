@@ -26,6 +26,8 @@
 
 - [게임 상점(Game Shop), Part 6](https://github.com/utilForever/Shop/blob/master/Problems/Game%20Shop%2C%20Part%206.md)
 
+- [게임 상점(Game Shop), Part 7](https://github.com/utilForever/Shop/blob/master/Problems/Game%20Shop%2C%20Part%207.md)
+
 ## 해답 (Solution)
 
 Solution 폴더 참조
